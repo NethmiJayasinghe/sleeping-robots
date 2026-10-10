@@ -177,10 +177,6 @@ SR_RUN_SMOKE=1 pytest tests/test_smoke_e2e.py -s     # miniature end-to-end run
 }
 ```
 
-## Contact
-
-Questions about the code or the experiments: Nethmi Jayasinghe (wjayas3@uic.edu).
-
 ## License
 
 MIT - see `LICENSE`.
