@@ -80,7 +80,7 @@ python scripts/evaluate.py  --run-dirs runs/seed42 --out results/seed42
 
 The stream is `reach → door-open → drawer-open → window-close →
 button-press-topdown`, 13,000 episodes total. Expect roughly 2-3 days on one
-modern GPU.
+modern GPU. This trains a single seed; pass a different `--seed` to train more.
 
 Training writes two checkpoints per skill:
 
@@ -112,7 +112,7 @@ Evaluation is run afterwards from those checkpoints. See
 ## Results
 
 Meta-World MT5 after learning five skills, as reported in the paper
-(mean ± standard error):
+(mean ± standard error over three seeds):
 
 | Metric | Sleeping Robots |
 |---|---|
