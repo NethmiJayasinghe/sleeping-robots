@@ -3,9 +3,6 @@
 Skills arrive one at a time, in this fixed order, and are never revisited::
 
     reach -> door-open -> drawer-open -> window-close -> button-press-topdown
-
-Episode cost varies a lot by skill (door ~44 ep/h, drawer ~103 ep/h on a single
-GPU), so the budgets below are not interchangeable.
 """
 
 import random
@@ -42,7 +39,7 @@ EARLY_STOP_PER_SKILL = {
     'window-close-v3':          {'min_eps': 500,  'patience': 500,  'improvement': 0.02, 'window': 100},
     'button-press-topdown-v3':  {'min_eps': 800,  'patience': 800,  'improvement': 0.02, 'window': 100},
 }
-"""Per-skill early stopping, tuned to each skill's reward dynamics."""
+"""Per-skill early-stopping rules."""
 
 PREREG_PAIRS = [
     (0, 1, "reach->door-open"),
@@ -52,13 +49,9 @@ PREREG_PAIRS = [
     (2, 4, "drawer-open->button-press-topdown"),
     (3, 4, "window-close->button-press-topdown"),
 ]
-"""The six related-skill pairs used by PRS, fixed *a priori* from shared
-interaction structure (gripper approach, handle/drawer contact) before the K=4
-wake was run. PRS scores ``min(S_i, S_j)`` over exactly these pairs.
-
-Note what PRS does and does not measure: the two skills in a pair are evaluated
-**separately** under the same shared policy. PRS is pairwise co-retention, not
-chained or joint execution.
+"""The six pre-registered related-skill pairs used by PRS, chosen from shared
+interaction structure. PRS scores ``min(S_i, S_j)`` over exactly these pairs,
+with each skill evaluated separately under the same shared policy.
 """
 
 

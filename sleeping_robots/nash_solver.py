@@ -80,14 +80,14 @@ class NashSolver:
         # Step toward the vertex e_{k*} maximising the linear approximation.
         for t in range(self.fw_iters):
             g_alpha = alpha @ G                                      # (D,)
-            scores = (G @ g_alpha).clamp(min=1e-8)                   # (K,) floored
+            scores = (G @ g_alpha).clamp(min=1e-8)                   # (K,)
             grad_F = (gram * (w / scores).unsqueeze(0)).sum(dim=1)   # (K,)
 
             k_star = torch.argmax(grad_F)
             e_k = torch.zeros(K, device=G.device)
             e_k[k_star] = 1.0
 
-            gamma = 2.0 / (t + 2)                                    # 1.0 at t=0
+            gamma = 2.0 / (t + 2)
             alpha = (1 - gamma) * alpha + gamma * e_k
 
         alpha = torch.clamp(alpha, min=0)

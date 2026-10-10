@@ -25,8 +25,7 @@ auto-tuner chase unreachable entropy."""
 
 TARGET_ENTROPY_PER_SKILL: dict = {}
 """Per-skill overrides. Empty for the MT5 stream - every skill uses
-``TARGET_ENTROPY``. (The longer streams used ``push-v3: -4.0``, which needs more
-exploration than the MT5 skills.)"""
+``TARGET_ENTROPY``."""
 
 RANDOM_EXPLORATION_STEPS = 5000
 """Uniform random actions for the first N env steps of each skill, so the replay
@@ -61,10 +60,10 @@ DEFAULT_CFG: dict = dict(
     batch_size=256,
 
     # Sleep
-    sleep_max_iters=4000,    # 5000+ destabilises at this lr
+    sleep_max_iters=4000,
     sleep_lr=2e-3,
     sleep_optimizer='adam',  # decouples step size from gradient magnitude
-    sleep_interp_alpha=0.0,  # interpolation init disabled (it broke door-open)
+    sleep_interp_alpha=0.0,  # interpolation init (0 disables)
     sleep_delta=1e-3,        # loss-plateau convergence threshold
     sleep_n_window=100,      # window for that threshold
     sleep_eps=1e-5,          # ||g_nash|| convergence threshold
