@@ -1,0 +1,5 @@
+torch>=2.0
+numpy>=1.24
+# Meta-World provides the MT5 tasks (3.0 API: reach-v3, door-open-v3, ...).
+metaworld>=3.0
+gymnasium>=0.29

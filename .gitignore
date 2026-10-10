@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+env/
+
+# Run outputs
+runs/
+results/
+*.pt
+
+# macOS
+.DS_Store

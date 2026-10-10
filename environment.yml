@@ -1,0 +1,16 @@
+# conda env create -f environment.yml && conda activate sleeping-robots
+name: sleeping-robots
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pytorch>=2.0
+  - pytorch-cuda=12.1
+  - numpy>=1.24
+  - pip
+  - pip:
+      - metaworld>=3.0
+      - gymnasium>=0.29
+      - pytest>=7.0
